@@ -11,7 +11,7 @@ from python_rako.helpers import convert_to_brightness, convert_to_scene
 
 from homeassistant.components.light import (
     ATTR_BRIGHTNESS,
-    SUPPORT_BRIGHTNESS,
+    ColorMode,
     LightEntity,
 )
 from homeassistant.config_entries import ConfigEntry
@@ -59,6 +59,9 @@ async def async_setup_entry(
 
 class RakoLight(LightEntity):
     """Representation of a Rako Light."""
+
+    _attr_color_mode = ColorMode.BRIGHTNESS
+    _attr_supported_color_modes = {ColorMode.BRIGHTNESS}
 
     def __init__(self, bridge: RakoBridge, light: python_rako.Light) -> None:
         """Initialize a RakoLight."""
@@ -116,10 +119,10 @@ class RakoLight(LightEntity):
         """Entity pushes its state to HA."""
         return False
 
-    @property
-    def supported_features(self) -> int:
-        """Flag supported features."""
-        return SUPPORT_BRIGHTNESS
+#    @property
+ #   def supported_features(self) -> int:
+ #       """Flag supported features."""
+ #       return SUPPORT_BRIGHTNESS
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn off the light."""
