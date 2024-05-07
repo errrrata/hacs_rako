@@ -1,16 +1,17 @@
 {
   "domain": "rako",
   "name": "Rako",
-  "config_flow": true,
-  "documentation": "https://github.com/SimonLeigh/hacs_rako",
-  "requirements": [
-    "python_rako==0.0.14"
-  ],
   "codeowners": [
     "@marengaz",
     "@SimonLeigh"
   ],
-  "iot_class": "local_push",
+  "config_flow": true,
+  "documentation": "https://github.com/SimonLeigh/hacs_rako",
   "integration_type": "hub",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/SimonLeigh/hacs_rako/issues",
+  "requirements": [
+    "python_rako==0.0.14"
+  ],
   "version": "0.3.1"
 }
