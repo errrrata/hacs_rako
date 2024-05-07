@@ -60,15 +60,13 @@ async def async_setup_entry(
 class RakoLight(LightEntity):
     """Representation of a Rako Light."""
 
-    _attr_color_mode = ColorMode.BRIGHTNESS
-    _attr_supported_color_modes = {ColorMode.BRIGHTNESS}
-
     def __init__(self, bridge: RakoBridge, light: python_rako.Light) -> None:
         """Initialize a RakoLight."""
         self.bridge = bridge
         self._light = light
         self._brightness = self._init_get_brightness_from_cache()
         self._available = True
+        self._attr_supported_color_modes= {ColorMode.BRIGHTNESS}
 
     @property
     def name(self) -> str:
@@ -123,6 +121,9 @@ class RakoLight(LightEntity):
  #   def supported_features(self) -> int:
  #       """Flag supported features."""
  #       return SUPPORT_BRIGHTNESS
+    @property
+    def color_mode(self) -> ColorMode:
+        return ColorMode.BRIGHTNESS
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn off the light."""
