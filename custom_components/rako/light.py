@@ -123,6 +123,7 @@ class RakoLight(LightEntity):
  #       return SUPPORT_BRIGHTNESS
     @property
     def color_mode(self) -> ColorMode:
+        """sets available color mode for Rako lights (only supports Brightness, for now)"""
         return ColorMode.BRIGHTNESS
 
     async def async_turn_off(self, **kwargs: Any) -> None:

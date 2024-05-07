@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import asyncio
 from asyncio import Task
+import contextlib
 import logging
 
 from python_rako.bridge import Bridge
@@ -75,10 +76,9 @@ class RakoBridge(Bridge):
         """Background task to stop listening for state updates."""
         if listener_task := self._listener_task:
             listener_task.cancel()
-            try:
+            with contextlib.suppress(asyncio.CancelledError):
                 await listener_task
-            except asyncio.CancelledError:
-                pass
+
 
     async def register_for_state_updates(self, light: RakoLight) -> None:
         """Register a light to listen for state updates."""
