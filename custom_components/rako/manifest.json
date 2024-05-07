@@ -13,5 +13,5 @@
   "requirements": [
     "python_rako==0.0.14"
   ],
-  "version": "0.3.1"
+  "version": "0.4.0"
 }
